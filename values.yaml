@@ -1,0 +1,11 @@
+enableEditOcpaiClusterRole: true
+
+namespaces:
+  - name: ai-project
+    users:
+      - alice
+      - bob
+  - name: ai-mobilenetv2
+    users:
+      - moshe
+      - bob

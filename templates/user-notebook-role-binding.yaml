@@ -1,0 +1,34 @@
+{{- range .Values.namespaces }}
+{{- $namespace := .name }}
+{{- range .users }}
+---
+# Bind user to the shared ClusterRole in their namespace
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ . }}-nb-clusterrole-binding
+  namespace: {{ $namespace }}
+subjects:
+  - kind: User
+    name: {{ . }}
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: ocpai-{{ . }}-cluster-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ . }}-edit-ocpai-clusterrole-binding
+  namespace: {{ $namespace }}
+subjects:
+  - kind: User
+    name: {{ . }}
+    apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: edit-ocpai-cluster-role
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
+{{- end }}

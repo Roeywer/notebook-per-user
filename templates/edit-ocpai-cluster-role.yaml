@@ -1,0 +1,2856 @@
+{{- if .Values.enableEditOcpaiClusterRole }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: edit-ocpai-cluster-role
+rules:
+- apiGroups:
+  - operators.coreos.com
+  resources:
+  - subscriptions
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - operators.coreos.com
+  resources:
+  - clusterserviceversions
+  - catalogsources
+  - installplans
+  - subscriptions
+  verbs:
+  - delete
+- apiGroups:
+  - operators.coreos.com
+  resources:
+  - clusterserviceversions
+  - catalogsources
+  - installplans
+  - subscriptions
+  - operatorgroups
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - packages.operators.coreos.com
+  resources:
+  - packagemanifests
+  - packagemanifests/icon
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - argoproj.io
+  resources:
+  - workflows
+  - workflows/finalizers
+  - workfloweventbindings
+  - workfloweventbindings/finalizers
+  - workflowtemplates
+  - workflowtemplates/finalizers
+  - cronworkflows
+  - cronworkflows/finalizers
+  - clusterworkflowtemplates
+  - clusterworkflowtemplates/finalizers
+  - workflowtaskresults
+  - workflowtaskresults/finalizers
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - authorino.kuadrant.io
+  resources:
+  - authconfigs
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - operator.authorino.kuadrant.io
+  resources:
+  - authorinos
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - services.platform.opendatahub.io
+  resources:
+  - auths
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - metallb.io
+  resources:
+  - bfdprofiles
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - metallb.io
+  resources:
+  - bgpadvertisements
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - metallb.io
+  resources:
+  - bgppeers
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - platform.stackrox.io
+  resources:
+  - centrals
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - nvidia.com
+  resources:
+  - clusterpolicies
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - workload.codeflare.dev
+  resources:
+  - appwrappers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - workload.codeflare.dev
+  resources:
+  - appwrappers/status
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - codeflares
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - metallb.io
+  resources:
+  - communities
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - dashboards
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - datasciencepipelinesapplications.opendatahub.io
+  resources:
+  - datasciencepipelinesapplications
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - datasciencecluster.opendatahub.io
+  resources:
+  - datascienceclusters
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - datasciencepipelines
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - dscinitialization.opendatahub.io
+  resources:
+  - dscinitializations
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - feastoperators
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - features.opendatahub.io
+  resources:
+  - featuretrackers
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - frrk8s.metallb.io
+  resources:
+  - frrconfigurations
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - frrk8s.metallb.io
+  resources:
+  - frrnodestates
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanaalertrulegroups
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanacontactpoints
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanadashboards
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanadatasources
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanafolders
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanalibrarypanels
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanamutetimings
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafananotificationpolicies
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafananotificationpolicyroutes
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafananotificationtemplates
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanas
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - hcpauths
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - hcpvaultsecretsapps
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - metallb.io
+  resources:
+  - ipaddresspools
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - authentication.istio.io
+  - config.istio.io
+  - networking.istio.io
+  - rbac.istio.io
+  - security.istio.io
+  - authentication.maistra.io
+  - rbac.maistra.io
+  resources:
+  - '*'
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - maistra.io
+  resources:
+  - servicemeshextensions
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - k8s.keycloak.org
+  resources:
+  - keycloakrealmimports
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - k8s.keycloak.org
+  resources:
+  - keycloaks
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - serving.knative.dev
+  resources:
+  - '*'
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - networking.internal.knative.dev
+  - autoscaling.internal.knative.dev
+  - caching.internal.knative.dev
+  resources:
+  - '*'
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - operator.knative.dev
+  resources:
+  - knativeeventings
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - operator.serverless.openshift.io
+  resources:
+  - knativekafkas
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - operator.knative.dev
+  resources:
+  - knativeservings
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - serving.kserve.io
+  resources:
+  - inferenceservices
+  - servingruntimes
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - kserves
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - kubeflow.org
+  resources:
+  - mpijobs
+  - tfjobs
+  - pytorchjobs
+  - mxjobs
+  - xgboostjobs
+  - paddlejobs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - kubeflow.org
+  resources:
+  - mpijobs/status
+  - tfjobs/status
+  - pytorchjobs/status
+  - mxjobs/status
+  - xgboostjobs/status
+  - paddlejobs/status
+  verbs:
+  - get
+- apiGroups:
+  - ray.io
+  resources:
+  - rayjobs
+  - rayclusters
+  - rayservices
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ray.io
+  resources:
+  - rayservices/finalizers
+  - rayclusters/finalizers
+  - rayjobs/finalizers
+  - rayservices/status
+  - rayclusters/status
+  - rayjobs/status
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - kueues
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - metallb.io
+  resources:
+  - l2advertisements
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - metallb.io
+  resources:
+  - metallbs
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - modelcontrollers
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - modelmeshservings
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - modelregistries
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - services.platform.opendatahub.io
+  resources:
+  - monitorings
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - nmstate.io
+  resources:
+  - nmstates
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - nfd.openshift.io
+  resources:
+  - nodefeaturediscoveries
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - nfd.openshift.io
+  resources:
+  - nodefeaturegroups
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - nfd.openshift.io
+  resources:
+  - nodefeaturerules
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - nfd.openshift.io
+  resources:
+  - nodefeatures
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - topology.node.k8s.io
+  resources:
+  - noderesourcetopologies
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - nvidia.com
+  resources:
+  - nvidiadrivers
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - kubeflow.org
+  resources:
+  - notebooks
+  - notebooks/status
+  verbs:
+  - list
+  - watch
+  - create
+  - delete
+  - deletecollection
+  - patch
+  - update
+- apiGroups:
+  - k8s.ovn.org
+  resources:
+  - userdefinednetworks
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - packages.operators.coreos.com
+  resources:
+  - packagemanifests
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - helm.openshift.io
+  resources:
+  - projecthelmchartrepositories
+  verbs:
+  - get
+  - list
+  - update
+  - create
+  - watch
+  - patch
+  - delete
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - rays
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  - serviceaccounts
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  - image.openshift.io
+  resources:
+  - imagestreamimages
+  - imagestreammappings
+  - imagestreams
+  - imagestreams/secrets
+  - imagestreamtags
+  - imagetags
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  - image.openshift.io
+  resources:
+  - imagestreamimports
+  verbs:
+  - create
+- apiGroups:
+  - ""
+  - image.openshift.io
+  resources:
+  - imagestreams/layers
+  verbs:
+  - get
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - get
+- apiGroups:
+  - ""
+  - project.openshift.io
+  resources:
+  - projects
+  verbs:
+  - get
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - secrettransformations
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - platform.stackrox.io
+  resources:
+  - securedclusters
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - config.stackrox.io
+  resources:
+  - securitypolicies
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - metallb.io
+  resources:
+  - servicel2statuses
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - maistra.io
+  resources:
+  - servicemeshcontrolplanes
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - maistra.io
+  resources:
+  - servicemeshmemberrolls
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - maistra.io
+  resources:
+  - servicemeshmembers
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - ""
+  resources:
+  - pods/attach
+  - pods/exec
+  - pods/portforward
+  - pods/proxy
+  - secrets
+  - services/proxy
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - serviceaccounts
+  verbs:
+  - impersonate
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - pods/attach
+  - pods/exec
+  - pods/portforward
+  - pods/proxy
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - patch
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - pods/eviction
+  verbs:
+  - create
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  - endpoints
+  - events
+  - persistentvolumeclaims
+  - replicationcontrollers
+  - replicationcontrollers/scale
+  - secrets
+  - serviceaccounts
+  - services
+  - services/proxy
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - patch
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - serviceaccounts/token
+  verbs:
+  - create
+- apiGroups:
+  - apps
+  resources:
+  - daemonsets
+  - deployments
+  - deployments/rollback
+  - deployments/scale
+  - replicasets
+  - replicasets/scale
+  - statefulsets
+  - statefulsets/scale
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - patch
+  - update
+- apiGroups:
+  - autoscaling
+  resources:
+  - horizontalpodautoscalers
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - patch
+  - update
+- apiGroups:
+  - batch
+  resources:
+  - cronjobs
+  - jobs
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - patch
+  - update
+- apiGroups:
+  - extensions
+  resources:
+  - daemonsets
+  - deployments
+  - deployments/rollback
+  - deployments/scale
+  - ingresses
+  - networkpolicies
+  - replicasets
+  - replicasets/scale
+  - replicationcontrollers/scale
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - patch
+  - update
+- apiGroups:
+  - policy
+  resources:
+  - poddisruptionbudgets
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - patch
+  - update
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - ingresses
+  - networkpolicies
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - patch
+  - update
+- apiGroups:
+  - coordination.k8s.io
+  resources:
+  - leases
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - metrics.k8s.io
+  resources:
+  - pods
+  - nodes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  - image.openshift.io
+  resources:
+  - imagestreams
+  verbs:
+  - create
+- apiGroups:
+  - ""
+  - build.openshift.io
+  resources:
+  - builds/details
+  verbs:
+  - update
+- apiGroups:
+  - ""
+  - build.openshift.io
+  resources:
+  - builds
+  verbs:
+  - get
+- apiGroups:
+  - snapshot.storage.k8s.io
+  resources:
+  - volumesnapshots
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+  - deletecollection
+- apiGroups:
+  - ""
+  - build.openshift.io
+  resources:
+  - buildconfigs
+  - buildconfigs/webhooks
+  - builds
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  - build.openshift.io
+  resources:
+  - builds/log
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  - build.openshift.io
+  resources:
+  - buildconfigs/instantiate
+  - buildconfigs/instantiatebinary
+  - builds/clone
+  verbs:
+  - create
+- apiGroups:
+  - build.openshift.io
+  resources:
+  - jenkins
+  verbs:
+  - edit
+  - view
+- apiGroups:
+  - ""
+  - apps.openshift.io
+  resources:
+  - deploymentconfigs
+  - deploymentconfigs/scale
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  - apps.openshift.io
+  resources:
+  - deploymentconfigrollbacks
+  - deploymentconfigs/instantiate
+  - deploymentconfigs/rollback
+  verbs:
+  - create
+- apiGroups:
+  - ""
+  - apps.openshift.io
+  resources:
+  - deploymentconfigs/log
+  - deploymentconfigs/status
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  - image.openshift.io
+  resources:
+  - imagestreams/status
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  - quota.openshift.io
+  resources:
+  - appliedclusterresourcequotas
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  - route.openshift.io
+  resources:
+  - routes
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  - route.openshift.io
+  resources:
+  - routes/custom-host
+  verbs:
+  - create
+- apiGroups:
+  - ""
+  - route.openshift.io
+  resources:
+  - routes/status
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  - template.openshift.io
+  resources:
+  - processedtemplates
+  - templateconfigs
+  - templateinstances
+  - templates
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - networkpolicies
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  - build.openshift.io
+  resources:
+  - buildlogs
+  verbs:
+  - create
+  - delete
+  - deletecollection
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - resourcequotausages
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - trainingoperators
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - trustyai.opendatahub.io
+  resources:
+  - trustyaiservices
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - trustyai.opendatahub.io
+  resources:
+  - trustyaiservices/status
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - trustyais
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - vaultauthglobals
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - vaultauths
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - vaultconnections
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - vaultdynamicsecrets
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - vaultpkisecrets
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - vaultstaticsecrets
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - autoscaling.k8s.io
+  resources:
+  - verticalpodautoscalercheckpoints
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - autoscaling.openshift.io
+  resources:
+  - verticalpodautoscalercontrollers
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - autoscaling.k8s.io
+  resources:
+  - verticalpodautoscalers
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+- apiGroups:
+  - argoproj.io
+  resources:
+  - workflows
+  - workflows/finalizers
+  - workfloweventbindings
+  - workfloweventbindings/finalizers
+  - workflowtemplates
+  - workflowtemplates/finalizers
+  - cronworkflows
+  - cronworkflows/finalizers
+  - clusterworkflowtemplates
+  - clusterworkflowtemplates/finalizers
+  - workflowtaskresults
+  - workflowtaskresults/finalizers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - authconfigs.authorino.kuadrant.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - authorino.kuadrant.io
+  resources:
+  - authconfigs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - authorinos.operator.authorino.kuadrant.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - operator.authorino.kuadrant.io
+  resources:
+  - authorinos
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - auths.services.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - services.platform.opendatahub.io
+  resources:
+  - auths
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - bfdprofiles.metallb.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - metallb.io
+  resources:
+  - bfdprofiles
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - bgpadvertisements.metallb.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - metallb.io
+  resources:
+  - bgpadvertisements
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - bgppeers.metallb.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - metallb.io
+  resources:
+  - bgppeers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - centrals.platform.stackrox.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - platform.stackrox.io
+  resources:
+  - centrals
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - clusterpolicies.nvidia.com
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - nvidia.com
+  resources:
+  - clusterpolicies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - workload.codeflare.dev
+  resources:
+  - appwrappers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - codeflares.components.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - codeflares
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - communities.metallb.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - metallb.io
+  resources:
+  - communities
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - dashboards.components.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - dashboards
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - datasciencepipelinesapplications.opendatahub.io
+  resources:
+  - datasciencepipelinesapplications
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - datascienceclusters.datasciencecluster.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - datasciencecluster.opendatahub.io
+  resources:
+  - datascienceclusters
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - datasciencepipelines.components.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - datasciencepipelines
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - dscinitializations.dscinitialization.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - dscinitialization.opendatahub.io
+  resources:
+  - dscinitializations
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - feastoperators.components.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - feastoperators
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - featuretrackers.features.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - features.opendatahub.io
+  resources:
+  - featuretrackers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - frrconfigurations.frrk8s.metallb.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - frrk8s.metallb.io
+  resources:
+  - frrconfigurations
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - frrnodestates.frrk8s.metallb.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - frrk8s.metallb.io
+  resources:
+  - frrnodestates
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - grafanaalertrulegroups.grafana.integreatly.org
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanaalertrulegroups
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - grafanacontactpoints.grafana.integreatly.org
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanacontactpoints
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - grafanadashboards.grafana.integreatly.org
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanadashboards
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - grafanadatasources.grafana.integreatly.org
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanadatasources
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - grafanafolders.grafana.integreatly.org
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanafolders
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - grafanalibrarypanels.grafana.integreatly.org
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanalibrarypanels
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - grafanamutetimings.grafana.integreatly.org
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanamutetimings
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - grafananotificationpolicies.grafana.integreatly.org
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafananotificationpolicies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - grafananotificationpolicyroutes.grafana.integreatly.org
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafananotificationpolicyroutes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - grafananotificationtemplates.grafana.integreatly.org
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafananotificationtemplates
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - grafanas.grafana.integreatly.org
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - grafana.integreatly.org
+  resources:
+  - grafanas
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - hcpauths.secrets.hashicorp.com
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - hcpauths
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - hcpvaultsecretsapps.secrets.hashicorp.com
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - hcpvaultsecretsapps
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - ipaddresspools.metallb.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - metallb.io
+  resources:
+  - ipaddresspools
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - authentication.istio.io
+  - config.istio.io
+  - networking.istio.io
+  - rbac.istio.io
+  - security.istio.io
+  - authentication.maistra.io
+  - rbac.maistra.io
+  resources:
+  - '*'
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - maistra.io
+  resources:
+  - servicemeshextensions
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - keycloakrealmimports.k8s.keycloak.org
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - k8s.keycloak.org
+  resources:
+  - keycloakrealmimports
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - keycloaks.k8s.keycloak.org
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - k8s.keycloak.org
+  resources:
+  - keycloaks
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - serving.knative.dev
+  - networking.internal.knative.dev
+  - autoscaling.internal.knative.dev
+  - caching.internal.knative.dev
+  resources:
+  - '*'
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - knativeeventings.operator.knative.dev
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - operator.knative.dev
+  resources:
+  - knativeeventings
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - knativekafkas.operator.serverless.openshift.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - operator.serverless.openshift.io
+  resources:
+  - knativekafkas
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - knativeservings.operator.knative.dev
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - operator.knative.dev
+  resources:
+  - knativeservings
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - serving.kserve.io
+  resources:
+  - servingruntimes
+  - servingruntimes/status
+  - servingruntimes/finalizers
+  - inferenceservices
+  - inferenceservices/status
+  - inferenceservices/finalizers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - kserves.components.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - kserves
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - kubeflow.org
+  resources:
+  - mpijobs
+  - tfjobs
+  - pytorchjobs
+  - mxjobs
+  - xgboostjobs
+  - paddlejobs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ray.io
+  resources:
+  - rayjobs
+  - rayclusters
+  - rayservices
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - kueues.components.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - kueues
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - l2advertisements.metallb.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - metallb.io
+  resources:
+  - l2advertisements
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - metallbs.metallb.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - metallb.io
+  resources:
+  - metallbs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - kubeflow.org
+  resources:
+  - servingruntimes
+  - servingruntimes/status
+  - servingruntimes/finalizers
+  - inferenceservices
+  - inferenceservices/status
+  - inferenceservices/finalizers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - modelcontrollers.components.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - modelcontrollers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - modelmeshservings.components.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - modelmeshservings
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - modelregistries.components.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - modelregistries
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - monitorings.services.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - services.platform.opendatahub.io
+  resources:
+  - monitorings
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - nmstates.nmstate.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - nmstate.io
+  resources:
+  - nmstates
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - nodefeaturediscoveries.nfd.openshift.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - nfd.openshift.io
+  resources:
+  - nodefeaturediscoveries
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - nodefeaturegroups.nfd.openshift.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - nfd.openshift.io
+  resources:
+  - nodefeaturegroups
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - nodefeaturerules.nfd.openshift.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - nfd.openshift.io
+  resources:
+  - nodefeaturerules
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - nodefeatures.nfd.openshift.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - nfd.openshift.io
+  resources:
+  - nodefeatures
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - noderesourcetopologies.topology.node.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - topology.node.k8s.io
+  resources:
+  - noderesourcetopologies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - nvidiadrivers.nvidia.com
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - nvidia.com
+  resources:
+  - nvidiadrivers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - k8s.ovn.org
+  resources:
+  - userdefinednetworks
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - packages.operators.coreos.com
+  resources:
+  - packagemanifests
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - rays.components.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - rays
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  - image.openshift.io
+  resources:
+  - imagestreamimages
+  - imagestreammappings
+  - imagestreams
+  - imagestreamtags
+  - imagetags
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  - image.openshift.io
+  resources:
+  - imagestreams/layers
+  verbs:
+  - get
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - secrettransformations.secrets.hashicorp.com
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - secrettransformations
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - securedclusters.platform.stackrox.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - platform.stackrox.io
+  resources:
+  - securedclusters
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - securitypolicies.config.stackrox.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - config.stackrox.io
+  resources:
+  - securitypolicies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - servicel2statuses.metallb.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - metallb.io
+  resources:
+  - servicel2statuses
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - servicemeshcontrolplanes.maistra.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - maistra.io
+  resources:
+  - servicemeshcontrolplanes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - servicemeshmemberrolls.maistra.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - maistra.io
+  resources:
+  - servicemeshmemberrolls
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - servicemeshmembers.maistra.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - maistra.io
+  resources:
+  - servicemeshmembers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  - endpoints
+  - persistentvolumeclaims
+  - persistentvolumeclaims/status
+  - pods
+  - replicationcontrollers
+  - replicationcontrollers/scale
+  - serviceaccounts
+  - services
+  - services/status
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - bindings
+  - events
+  - limitranges
+  - namespaces/status
+  - pods/log
+  - pods/status
+  - replicationcontrollers/status
+  - resourcequotas
+  - resourcequotas/status
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - discovery.k8s.io
+  resources:
+  - endpointslices
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps
+  resources:
+  - controllerrevisions
+  - daemonsets
+  - daemonsets/status
+  - deployments
+  - deployments/scale
+  - deployments/status
+  - replicasets
+  - replicasets/scale
+  - replicasets/status
+  - statefulsets
+  - statefulsets/scale
+  - statefulsets/status
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - autoscaling
+  resources:
+  - horizontalpodautoscalers
+  - horizontalpodautoscalers/status
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - batch
+  resources:
+  - cronjobs
+  - cronjobs/status
+  - jobs
+  - jobs/status
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - extensions
+  resources:
+  - daemonsets
+  - daemonsets/status
+  - deployments
+  - deployments/scale
+  - deployments/status
+  - ingresses
+  - ingresses/status
+  - networkpolicies
+  - replicasets
+  - replicasets/scale
+  - replicasets/status
+  - replicationcontrollers/scale
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - policy
+  resources:
+  - poddisruptionbudgets
+  - poddisruptionbudgets/status
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - ingresses
+  - ingresses/status
+  - networkpolicies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - snapshot.storage.k8s.io
+  resources:
+  - volumesnapshots
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  - build.openshift.io
+  resources:
+  - buildconfigs
+  - buildconfigs/webhooks
+  - builds
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - build.openshift.io
+  resources:
+  - jenkins
+  verbs:
+  - view
+- apiGroups:
+  - ""
+  - apps.openshift.io
+  resources:
+  - deploymentconfigs
+  - deploymentconfigs/scale
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  - route.openshift.io
+  resources:
+  - routes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  - template.openshift.io
+  resources:
+  - processedtemplates
+  - templateconfigs
+  - templateinstances
+  - templates
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  - build.openshift.io
+  resources:
+  - buildlogs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - trainingoperators.components.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - trainingoperators
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - trustyai.opendatahub.io
+  resources:
+  - trustyaiservices
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - trustyais.components.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - trustyais
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - vaultauthglobals.secrets.hashicorp.com
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - vaultauthglobals
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - vaultauths.secrets.hashicorp.com
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - vaultauths
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - vaultconnections.secrets.hashicorp.com
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - vaultconnections
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - vaultdynamicsecrets.secrets.hashicorp.com
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - vaultdynamicsecrets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - vaultpkisecrets.secrets.hashicorp.com
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - vaultpkisecrets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - vaultstaticsecrets.secrets.hashicorp.com
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - secrets.hashicorp.com
+  resources:
+  - vaultstaticsecrets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - verticalpodautoscalercheckpoints.autoscaling.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - autoscaling.k8s.io
+  resources:
+  - verticalpodautoscalercheckpoints
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - verticalpodautoscalercontrollers.autoscaling.openshift.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - autoscaling.openshift.io
+  resources:
+  - verticalpodautoscalercontrollers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - verticalpodautoscalers.autoscaling.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - autoscaling.k8s.io
+  resources:
+  - verticalpodautoscalers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apiextensions.k8s.io
+  resourceNames:
+  - workbenches.components.platform.opendatahub.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - workbenches
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - components.platform.opendatahub.io
+  resources:
+  - workbenches
+  verbs:
+  - create
+  - update
+  - patch
+  - delete
+{{- end }}
