@@ -5,6 +5,7 @@ namespaces:
     users:
       - alice
       - bob
+      - david
   - name: ai-mobilenetv2
     users:
       - moshe
